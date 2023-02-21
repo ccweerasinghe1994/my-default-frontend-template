@@ -1,0 +1,2 @@
+# my-default-frontend-template
+ 
