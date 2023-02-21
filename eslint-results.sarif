@@ -1,0 +1,583 @@
+{
+  "version": "2.1.0",
+  "$schema": "http://json.schemastore.org/sarif-2.1.0-rtm.5",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "ESLint",
+          "informationUri": "https://eslint.org",
+          "rules": [
+            {
+              "id": "@typescript-eslint/explicit-function-return-type",
+              "helpUri": "https://typescript-eslint.io/rules/explicit-function-return-type",
+              "properties": {},
+              "shortDescription": {
+                "text": "Require explicit return types on functions and class methods"
+              }
+            },
+            {
+              "id": "@typescript-eslint/space-before-function-paren",
+              "helpUri": "https://typescript-eslint.io/rules/space-before-function-paren",
+              "properties": {},
+              "shortDescription": {
+                "text": "Enforce consistent spacing before function parenthesis"
+              }
+            },
+            {
+              "id": "react/react-in-jsx-scope",
+              "helpUri": "https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/react-in-jsx-scope.md",
+              "properties": {
+                "category": "Possible Errors"
+              },
+              "shortDescription": {
+                "text": "Disallow missing React when using JSX"
+              }
+            },
+            {
+              "id": "react/jsx-no-target-blank",
+              "helpUri": "https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/jsx-no-target-blank.md",
+              "properties": {
+                "category": "Best Practices"
+              },
+              "shortDescription": {
+                "text": "Disallow `target=\"_blank\"` attribute without `rel=\"noreferrer\"`"
+              }
+            },
+            {
+              "id": "@typescript-eslint/no-confusing-void-expression",
+              "helpUri": "https://typescript-eslint.io/rules/no-confusing-void-expression",
+              "properties": {},
+              "shortDescription": {
+                "text": "Require expressions of type void to appear in statement position"
+              }
+            },
+            {
+              "id": "@typescript-eslint/comma-dangle",
+              "helpUri": "https://typescript-eslint.io/rules/comma-dangle",
+              "properties": {},
+              "shortDescription": {
+                "text": "Require or disallow trailing commas"
+              }
+            },
+            {
+              "id": "@typescript-eslint/triple-slash-reference",
+              "helpUri": "https://typescript-eslint.io/rules/triple-slash-reference",
+              "properties": {},
+              "shortDescription": {
+                "text": "Disallow certain triple slash directives in favor of ES6-style import declarations"
+              }
+            }
+          ],
+          "version": "8.34.0"
+        }
+      },
+      "artifacts": [
+        {
+          "location": {
+            "uri": "file:///C:/Users/Chamara/Documents/code/2023/my-default-frontend-template/src/App.tsx"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///C:/Users/Chamara/Documents/code/2023/my-default-frontend-template/src/main.tsx"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///C:/Users/Chamara/Documents/code/2023/my-default-frontend-template/src/vite-env.d.ts"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///C:/Users/Chamara/Documents/code/2023/my-default-frontend-template/vite.config.ts"
+          }
+        }
+      ],
+      "results": [
+        {
+          "level": "error",
+          "message": {
+            "text": "Missing return type on function."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/Chamara/Documents/code/2023/my-default-frontend-template/src/App.tsx",
+                  "index": 0
+                },
+                "region": {
+                  "startLine": 5,
+                  "startColumn": 1,
+                  "endLine": 5,
+                  "endColumn": 15
+                }
+              }
+            }
+          ],
+          "ruleId": "@typescript-eslint/explicit-function-return-type",
+          "ruleIndex": 0
+        },
+        {
+          "level": "error",
+          "message": {
+            "text": "Missing space before function parentheses."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/Chamara/Documents/code/2023/my-default-frontend-template/src/App.tsx",
+                  "index": 0
+                },
+                "region": {
+                  "startLine": 5,
+                  "startColumn": 13,
+                  "endLine": 5,
+                  "endColumn": 14
+                }
+              }
+            }
+          ],
+          "ruleId": "@typescript-eslint/space-before-function-paren",
+          "ruleIndex": 1
+        },
+        {
+          "level": "error",
+          "message": {
+            "text": "'React' must be in scope when using JSX"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/Chamara/Documents/code/2023/my-default-frontend-template/src/App.tsx",
+                  "index": 0
+                },
+                "region": {
+                  "startLine": 9,
+                  "startColumn": 5,
+                  "endLine": 9,
+                  "endColumn": 26
+                }
+              }
+            }
+          ],
+          "ruleId": "react/react-in-jsx-scope",
+          "ruleIndex": 2
+        },
+        {
+          "level": "error",
+          "message": {
+            "text": "'React' must be in scope when using JSX"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/Chamara/Documents/code/2023/my-default-frontend-template/src/App.tsx",
+                  "index": 0
+                },
+                "region": {
+                  "startLine": 10,
+                  "startColumn": 7,
+                  "endLine": 10,
+                  "endColumn": 12
+                }
+              }
+            }
+          ],
+          "ruleId": "react/react-in-jsx-scope",
+          "ruleIndex": 2
+        },
+        {
+          "level": "error",
+          "message": {
+            "text": "Using target=\"_blank\" without rel=\"noreferrer\" (which implies rel=\"noopener\") is a security risk in older browsers: see https://mathiasbynens.github.io/rel-noopener/#recommendations"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/Chamara/Documents/code/2023/my-default-frontend-template/src/App.tsx",
+                  "index": 0
+                },
+                "region": {
+                  "startLine": 11,
+                  "startColumn": 9,
+                  "endLine": 11,
+                  "endColumn": 54
+                }
+              }
+            }
+          ],
+          "ruleId": "react/jsx-no-target-blank",
+          "ruleIndex": 3
+        },
+        {
+          "level": "error",
+          "message": {
+            "text": "'React' must be in scope when using JSX"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/Chamara/Documents/code/2023/my-default-frontend-template/src/App.tsx",
+                  "index": 0
+                },
+                "region": {
+                  "startLine": 11,
+                  "startColumn": 9,
+                  "endLine": 11,
+                  "endColumn": 54
+                }
+              }
+            }
+          ],
+          "ruleId": "react/react-in-jsx-scope",
+          "ruleIndex": 2
+        },
+        {
+          "level": "error",
+          "message": {
+            "text": "'React' must be in scope when using JSX"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/Chamara/Documents/code/2023/my-default-frontend-template/src/App.tsx",
+                  "index": 0
+                },
+                "region": {
+                  "startLine": 12,
+                  "startColumn": 11,
+                  "endLine": 12,
+                  "endColumn": 67
+                }
+              }
+            }
+          ],
+          "ruleId": "react/react-in-jsx-scope",
+          "ruleIndex": 2
+        },
+        {
+          "level": "error",
+          "message": {
+            "text": "Using target=\"_blank\" without rel=\"noreferrer\" (which implies rel=\"noopener\") is a security risk in older browsers: see https://mathiasbynens.github.io/rel-noopener/#recommendations"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/Chamara/Documents/code/2023/my-default-frontend-template/src/App.tsx",
+                  "index": 0
+                },
+                "region": {
+                  "startLine": 14,
+                  "startColumn": 9,
+                  "endLine": 14,
+                  "endColumn": 55
+                }
+              }
+            }
+          ],
+          "ruleId": "react/jsx-no-target-blank",
+          "ruleIndex": 3
+        },
+        {
+          "level": "error",
+          "message": {
+            "text": "'React' must be in scope when using JSX"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/Chamara/Documents/code/2023/my-default-frontend-template/src/App.tsx",
+                  "index": 0
+                },
+                "region": {
+                  "startLine": 14,
+                  "startColumn": 9,
+                  "endLine": 14,
+                  "endColumn": 55
+                }
+              }
+            }
+          ],
+          "ruleId": "react/react-in-jsx-scope",
+          "ruleIndex": 2
+        },
+        {
+          "level": "error",
+          "message": {
+            "text": "'React' must be in scope when using JSX"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/Chamara/Documents/code/2023/my-default-frontend-template/src/App.tsx",
+                  "index": 0
+                },
+                "region": {
+                  "startLine": 15,
+                  "startColumn": 11,
+                  "endLine": 15,
+                  "endColumn": 74
+                }
+              }
+            }
+          ],
+          "ruleId": "react/react-in-jsx-scope",
+          "ruleIndex": 2
+        },
+        {
+          "level": "error",
+          "message": {
+            "text": "'React' must be in scope when using JSX"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/Chamara/Documents/code/2023/my-default-frontend-template/src/App.tsx",
+                  "index": 0
+                },
+                "region": {
+                  "startLine": 18,
+                  "startColumn": 7,
+                  "endLine": 18,
+                  "endColumn": 11
+                }
+              }
+            }
+          ],
+          "ruleId": "react/react-in-jsx-scope",
+          "ruleIndex": 2
+        },
+        {
+          "level": "error",
+          "message": {
+            "text": "'React' must be in scope when using JSX"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/Chamara/Documents/code/2023/my-default-frontend-template/src/App.tsx",
+                  "index": 0
+                },
+                "region": {
+                  "startLine": 19,
+                  "startColumn": 7,
+                  "endLine": 19,
+                  "endColumn": 29
+                }
+              }
+            }
+          ],
+          "ruleId": "react/react-in-jsx-scope",
+          "ruleIndex": 2
+        },
+        {
+          "level": "error",
+          "message": {
+            "text": "'React' must be in scope when using JSX"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/Chamara/Documents/code/2023/my-default-frontend-template/src/App.tsx",
+                  "index": 0
+                },
+                "region": {
+                  "startLine": 20,
+                  "startColumn": 9,
+                  "endLine": 20,
+                  "endColumn": 64
+                }
+              }
+            }
+          ],
+          "ruleId": "react/react-in-jsx-scope",
+          "ruleIndex": 2
+        },
+        {
+          "level": "error",
+          "message": {
+            "text": "Returning a void expression from an arrow function shorthand is forbidden. Please add braces to the arrow function."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/Chamara/Documents/code/2023/my-default-frontend-template/src/App.tsx",
+                  "index": 0
+                },
+                "region": {
+                  "startLine": 20,
+                  "startColumn": 32,
+                  "endLine": 20,
+                  "endColumn": 62
+                }
+              }
+            }
+          ],
+          "ruleId": "@typescript-eslint/no-confusing-void-expression",
+          "ruleIndex": 4
+        },
+        {
+          "level": "error",
+          "message": {
+            "text": "'React' must be in scope when using JSX"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/Chamara/Documents/code/2023/my-default-frontend-template/src/App.tsx",
+                  "index": 0
+                },
+                "region": {
+                  "startLine": 23,
+                  "startColumn": 9,
+                  "endLine": 23,
+                  "endColumn": 12
+                }
+              }
+            }
+          ],
+          "ruleId": "react/react-in-jsx-scope",
+          "ruleIndex": 2
+        },
+        {
+          "level": "error",
+          "message": {
+            "text": "'React' must be in scope when using JSX"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/Chamara/Documents/code/2023/my-default-frontend-template/src/App.tsx",
+                  "index": 0
+                },
+                "region": {
+                  "startLine": 24,
+                  "startColumn": 16,
+                  "endLine": 24,
+                  "endColumn": 22
+                }
+              }
+            }
+          ],
+          "ruleId": "react/react-in-jsx-scope",
+          "ruleIndex": 2
+        },
+        {
+          "level": "error",
+          "message": {
+            "text": "'React' must be in scope when using JSX"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/Chamara/Documents/code/2023/my-default-frontend-template/src/App.tsx",
+                  "index": 0
+                },
+                "region": {
+                  "startLine": 27,
+                  "startColumn": 7,
+                  "endLine": 27,
+                  "endColumn": 36
+                }
+              }
+            }
+          ],
+          "ruleId": "react/react-in-jsx-scope",
+          "ruleIndex": 2
+        },
+        {
+          "level": "error",
+          "message": {
+            "text": "Unexpected trailing comma."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/Chamara/Documents/code/2023/my-default-frontend-template/src/main.tsx",
+                  "index": 1
+                },
+                "region": {
+                  "startLine": 9,
+                  "startColumn": 22,
+                  "endLine": 9,
+                  "endColumn": 23
+                }
+              }
+            }
+          ],
+          "ruleId": "@typescript-eslint/comma-dangle",
+          "ruleIndex": 5
+        },
+        {
+          "level": "error",
+          "message": {
+            "text": "Do not use a triple slash reference for vite/client, use `import` style instead."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/Chamara/Documents/code/2023/my-default-frontend-template/src/vite-env.d.ts",
+                  "index": 2
+                },
+                "region": {
+                  "startLine": 1,
+                  "startColumn": 1,
+                  "endLine": 1,
+                  "endColumn": 38
+                }
+              }
+            }
+          ],
+          "ruleId": "@typescript-eslint/triple-slash-reference",
+          "ruleIndex": 6
+        }
+      ],
+      "invocations": [
+        {
+          "toolConfigurationNotifications": [
+            {
+              "level": "error",
+              "message": {
+                "text": "Parsing error: ESLint was configured to run on `<tsconfigRootDir>/vite.config.ts` using `parserOptions.project`: <tsconfigRootDir>/tsconfig.json\nHowever, that TSConfig does not include this file. Either:\n- Change ESLint's list of included files to not include this file\n- Change that TSConfig to include this file\n- Create a new TSConfig that includes this file and include it in your parserOptions.project\nSee the typescript-eslint docs for more info: https://typescript-eslint.io/linting/troubleshooting#i-get-errors-telling-me-eslint-was-configured-to-run--however-that-tsconfig-does-not--none-of-those-tsconfigs-include-this-file"
+              },
+              "locations": [
+                {
+                  "physicalLocation": {
+                    "artifactLocation": {
+                      "uri": "file:///C:/Users/Chamara/Documents/code/2023/my-default-frontend-template/vite.config.ts",
+                      "index": 3
+                    }
+                  }
+                }
+              ],
+              "descriptor": {
+                "id": "ESL0999"
+              }
+            }
+          ],
+          "executionSuccessful": false
+        }
+      ]
+    }
+  ]
+}
