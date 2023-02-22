@@ -7,3 +7,5 @@ if [ "$BRANCH" = "development" ]; then
   echo "You are not allowed to commit changes directly to the development branch"
   exit 1
 fi
+
+exit 1
