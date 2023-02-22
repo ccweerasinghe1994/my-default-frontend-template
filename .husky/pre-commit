@@ -1,4 +1,16 @@
-#!/usr/bin/env sh
-. "$(dirname -- "$0")/_/husky.sh"
+# #!/usr/bin/env sh
+# . "$(dirname -- "$0")/_/husky.sh"
 
-npm run lint
+echo "🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥"
+
+#!/bin/bash
+set -e
+branch=$(git branch | sed -n -e 's/^\* \(.*\)/\1/p')
+if [[ "$branch" == "master" ]] || [[ "$branch" == "development" ]] || [[ "$branch" == "qa" ]] 
+then
+    echo "cannot commit to major branches" 
+    exit 1 
+else 
+    echo "Running code tests... 🔥🔥🔥🔥" 
+    npm run lint
+fi
