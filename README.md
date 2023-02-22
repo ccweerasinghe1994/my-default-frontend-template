@@ -12,9 +12,29 @@ then we have to give the react as the frame work and typescript as the language.
 ## then we can add eslint to our application
 
 ```bash
-npm init @eslint/config
+npm init @eslint/config 
 ```
 
+![Alt text](docs/img/1.png)
+![Alt text](docs/img/2.png)
+![Alt text](docs/img/3.png)
+![Alt text](docs/img/4.png)
+![Alt text](docs/img/5.png)
+![Alt text](docs/img/6.png)
+![Alt text](docs/img/7.png)
+![Alt text](docs/img/8.png)
+![Alt text](docs/img/9.png)
+![Alt text](docs/img/10.png)
+![Alt text](docs/img/11.png)
+![Alt text](docs/img/12.png)
+![Alt text](docs/img/13.png)
+![Alt text](docs/img/14.png)
+
+these dependencies are needed for the application.
+
+```bash
+npm i -D eslint-config-prettier eslint-plugin-n eslint-plugin-prettier eslint-plugin-promise eslint-plugin-react eslint-plugin-react-hooks prettier
+```
 this will prompt to answer questions regarding your application.
 
 this will generate the eslint config file
@@ -29,10 +49,15 @@ this will generate the eslint config file
 	"extends": [
         // using the plugins we import in the plugins section
 		"eslint:recommended",
+        // this will add the recommended rules from the react plugin
 		"plugin:react/recommended",
+        // this will add the recommended rules from the react-hooks plugin
 		"plugin:react-hooks/recommended",
+        // this will add the recommended rules from the @typescript-eslint
 		"plugin:@typescript-eslint/recommended",
+        // this will disable conflicting eslint rules with prettier
 		"prettier",
+        // so we don't have to import react in every component
 		"plugin:react/jsx-runtime"
 	],
 	"overrides": [],
@@ -44,19 +69,13 @@ this will generate the eslint config file
 		"sourceType": "module"
 	},
     // these are the plugins we installed on our application.
-    // react ->  "eslint-plugin-react": "^7.32.2",
     // @typescript-eslint -> @typescript-eslint/eslint-plugin
     // promise -> "eslint-plugin-promise": "^6.1.1",
-	"plugins": ["react", "@typescript-eslint", "promise"],
+	"plugins": ["@typescript-eslint", "promise"],
 	"rules": {
         // this will throw an error when we use tabs for indentation.
-		"indent": ["error", "tab"],
-        // use lf for the line break
+        // use lf for the line break will fix the crlf files when we run the linter
 		"linebreak-style": ["error", "unix"],
-        // use single quotes
-		"quotes": ["error", "single"],
-        // use semi colons
-		"semi": ["error", "always"],
 		/* this is related to promise" */
 		"promise/always-return": "error",
 		"promise/no-return-wrap": "error",
@@ -80,3 +99,11 @@ this will generate the eslint config file
 }
 
 ```
+
+## eslint config dependencies
+
+### [eslint-config-prettier](https://github.com/prettier/eslint-config-prettier/)
+Turns off all rules that are unnecessary or might conflict with Prettier.
+### [eslint-plugin-react](https://www.npmjs.com/package/eslint-plugin-react)
+
+React specific linting rules for eslint
