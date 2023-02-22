@@ -1,3 +1,4 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
-echo "this hook is running 🔥🔥🔥🔥🔥🔥" && npm run lint
+
+npm run lint

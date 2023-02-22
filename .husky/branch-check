@@ -2,7 +2,7 @@
 . "$(dirname -- "$0")/_/husky.sh"
 
 BRANCH=$(git rev-parse --abbrev-ref HEAD)
-echo "this hook is running 🔥🔥🔥🔥🔥🔥"
+echo "this hook is running 🔥🔥🔥🔥🔥🔥" && 
 if [ "$BRANCH" = "development" ]; then
   echo "You are not allowed to commit changes directly to the development branch"
   exit 1
