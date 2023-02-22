@@ -15,6 +15,8 @@ then we have to give the react as the frame work and typescript as the language.
 npm init @eslint/config 
 ```
 
+this will prompt to answer questions regarding your application.
+
 ![Alt text](docs/img/1.png)
 ![Alt text](docs/img/2.png)
 ![Alt text](docs/img/3.png)
@@ -32,12 +34,85 @@ npm init @eslint/config
 
 these dependencies are needed for the application.
 
+![Alt text](docs/img/15.png)
+
 ```bash
-npm i -D eslint-config-prettier eslint-plugin-n eslint-plugin-prettier eslint-plugin-promise eslint-plugin-react eslint-plugin-react-hooks prettier
+npm i -D @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint eslint-plugin-react
 ```
-this will prompt to answer questions regarding your application.
 
 this will generate the eslint config file
+
+```json
+{
+    "env": {
+        "browser": true,
+        "es2021": true
+    },
+    "extends": [
+        "eslint:recommended",
+        "plugin:react/recommended",
+        "plugin:@typescript-eslint/recommended"
+    ],
+    "overrides": [
+    ],
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "ecmaVersion": "latest",
+        "sourceType": "module"
+    },
+    "plugins": [
+        "react",
+        "@typescript-eslint"
+    ],
+    "rules": {
+        "indent": [
+            "error",
+            "tab"
+        ],
+        "linebreak-style": [
+            "error",
+            "unix"
+        ],
+        "quotes": [
+            "error",
+            "single"
+        ],
+        "semi": [
+            "error",
+            "always"
+        ]
+    }
+}
+
+```
+
+now our application looks like this.
+
+![Alt text](docs/img/16.png)
+
+since we are using react 18 we do not need to add react to every component
+
+so we will use this extension
+
+![Alt text](docs/img/17.png)
+
+this will remove the react error.
+
+to fix those issues we will run the linter \
+
+![Alt text](docs/img/18.png)
+
+let's run this command
+
+![Alt text](docs/img/19.png)
+
+now we can see the result 
+
+![Alt text](docs/img/20.png)
+![Alt text](docs/img/21.png)
+![Alt text](docs/img/22.png)
+
+
 ```json
 {
     "env": {
