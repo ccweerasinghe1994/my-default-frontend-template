@@ -233,8 +233,8 @@ adding prettier config
 		"plugin:react-hooks/recommended",
         // this will add the recommended rules from the @typescript-eslint
 		"plugin:@typescript-eslint/recommended",
-        // this will disable conflicting eslint rules with prettier
-		"prettier",
+         // add the prettier recommended setting
+		"plugin:prettier/recommended",
         // so we don't have to import react in every component
 		"plugin:react/jsx-runtime"
 	],
@@ -249,8 +249,19 @@ adding prettier config
     // these are the plugins we installed on our application.
     // @typescript-eslint -> @typescript-eslint/eslint-plugin
     // promise -> "eslint-plugin-promise": "^6.1.1",
-	"plugins": ["@typescript-eslint", "promise"],
+	"plugins": ["react","@typescript-eslint", "promise"],
 	"rules": {
+        "prettier/prettier": [
+			"error",
+			{
+				"singleQuote": true,
+				"endOfLine": "lf",
+				"semi": true,
+				"useTabs": true,
+				"bracketSpacing": true,
+				"bracketSameLine": true
+			}
+		]
         // this will throw an error when we use tabs for indentation.
         // use lf for the line break will fix the crlf files when we run the linter
 		"linebreak-style": ["error", "unix"],
