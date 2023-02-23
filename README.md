@@ -112,6 +112,109 @@ now we can see the result
 ![Alt text](docs/img/21.png)
 ![Alt text](docs/img/22.png)
 
+since we are using react hooks let's add linting rules for then as well.
+
+```bash
+npm install eslint-plugin-react-hooks --save-dev
+```
+![Alt text](docs/img/23.png)
+
+and this to extend.
+
+![Alt text](docs/img/24.png)
+
+
+now let's add prettier
+
+
+```bash
+npm install --save-dev --save-exact prettier
+```
+then 
+```bash
+echo {}> .prettierrc.json
+echo {}> ..prettierignore
+```
+ESLint (and other linters)
+
+If you use ESLint, install eslint-config-prettier to make ESLint and Prettier play nice with each other. It turns off all ESLint rules that are unnecessary or might conflict with Prettier.
+
+let's add `eslint-config-prettier`
+
+![Alt text](docs/img/25.png)
+
+if you are using vscode 
+
+![Alt text](docs/img/26.png)
+
+add the config
+
+![Alt text](docs/img/27.png)
+
+
+this sis the config
+```json
+
+{
+    "arrowParens": "always",
+    "singleQuote": true
+
+}
+```
+let's integrate prettier to the eslint.
+
+we will use `eslint-plugin-prettier `
+
+Runs Prettier as an ESLint rule and reports differences as individual ESLint issues.
+
+
+```bash
+npm install --save-dev eslint-plugin-prettier
+```
+
+package updated
+
+![Alt text](docs/img/28.png)
+
+adding prettier rules
+
+![Alt text](docs/img/29.png)
+
+adding prettier config
+
+![Alt text](docs/img/30.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ```json
 {
