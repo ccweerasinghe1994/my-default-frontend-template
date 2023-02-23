@@ -296,3 +296,13 @@ Turns off all rules that are unnecessary or might conflict with Prettier.
 ### [eslint-plugin-react](https://www.npmjs.com/package/eslint-plugin-react)
 
 React specific linting rules for eslint
+
+
+<!-- not completed -->
+
+## Adding lint-staged to lint our staged files.
+
+first install 
+```bash
+npm install --save-dev lint-staged
+```

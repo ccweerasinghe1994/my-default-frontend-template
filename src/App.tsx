@@ -14,7 +14,7 @@ function App(): JSX.Element {
 				<a href="https://reactjs.org" target="_blank" rel="noreferrer">
 					<img src={reactLogo} className="logo react" alt="React logo" />
 				</a>
-			                   </div>
+			</div>
 			<h1>Vite + React</h1>
 			<div className="card">
 				<button
