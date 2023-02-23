@@ -10,9 +10,6 @@
 		"lint": "npx eslint . --config .eslintrc.json --ext .ts,.tsx --fix",
 		"prepare": "husky install"
 	},
-	"lint-staged": {
-		"*.tsx": "eslint --fix"
-	},
 	"dependencies": {
 		"react": "^18.2.0",
 		"react-dom": "^18.2.0"
