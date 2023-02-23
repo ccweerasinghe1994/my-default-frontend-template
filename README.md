@@ -306,3 +306,81 @@ first install
 ```bash
 npm install --save-dev lint-staged
 ```
+
+then create a config file. `.lintstagedrc.json`
+```json
+{
+	"src/**/*.{ts,tsx}": "npm run lint",
+	"src/**/*.{html,scss,css}": "prettier --write",
+	"*.json": "prettier --write"
+}
+```
+
+## Husky setup
+
+```bash
+npx husky-init && npm install
+```
+It will setup husky, modify package.json and create a sample pre-commit hook that you can edit. By default, it will run npm test when you commit.
+![Alt text](docs/img/31.png)
+
+let's add our lint staged command to our pre commit hook.
+
+![Alt text](docs/img/32.png)
+
+to add new hooks 
+```bash
+npx husky add .husky/commit-msg 'npx --no -- commitlint --edit "$1"'
+```
+
+let's add commit lint to check our commit message.
+
+let's install the dependencies.
+```bash 
+npm i -D @commitlint/cli @commitlint/config-conventional
+```
+![Alt text](docs/img/33.png)
+
+let's add the configuration file to the commitlintrc.json
+
+```json
+{
+"extends":["@commitlint/config-conventional"],
+"rules": {
+    "header-max-length": [2, "always", 50]
+  }
+}
+```
+let's add this to our commit message hook
+to add new hooks 
+```bash
+npx husky add .husky/commit-msg 'npx --no -- commitlint --edit "$1"'
+```
+
+and change it to `prepare-commit-msg`
+```sh
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+npx --no -- commitlint --edit $1 --color
+```
+
+let's add a protected branch as well.
+
+
+```bash
+npx husky add .husky/commit-msg 'npx --no -- commitlint --edit "$1"'
+```
+
+add this code
+```json
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+BRANCH=$(git rev-parse --abbrev-ref HEAD)
+
+if [ "$BRANCH" = "main" ]; then
+  echo "You are not allowed to commit changes directly to the development branch"
+  exit 1
+fi
+```
