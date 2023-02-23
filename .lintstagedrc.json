@@ -1,5 +1,4 @@
 {
     "src/**/*.{ts,tsx}": "npm run lint",
-    "src/**/*.{html,scss,css}": "prettier --write"
-    
+    "src/**/*.{html,scss,css}": "prettier --write"    
 }
