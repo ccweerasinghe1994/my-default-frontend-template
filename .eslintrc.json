@@ -8,8 +8,8 @@
 		"plugin:react/recommended",
 		"plugin:react-hooks/recommended",
 		"plugin:@typescript-eslint/recommended",
-		"prettier",
-		"plugin:react/jsx-runtime"
+		"plugin:react/jsx-runtime",
+		"plugin:prettier/recommended"
 	],
 	"overrides": [],
 	"parser": "@typescript-eslint/parser",
@@ -19,7 +19,17 @@
 	},
 	"plugins": ["react", "@typescript-eslint", "promise"],
 	"rules": {
-		"linebreak-style": ["error", "unix"],
+		"prettier/prettier": [
+			"error",
+			{
+				"singleQuote": true,
+				"endOfLine": "lf",
+				"semi": true,
+				"useTabs": true,
+				"bracketSpacing": true,
+				"bracketSameLine": true
+			}
+		],
 		/* this is related to promise" */
 		"promise/always-return": "error",
 		"promise/no-return-wrap": "error",

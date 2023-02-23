@@ -112,6 +112,109 @@ now we can see the result
 ![Alt text](docs/img/21.png)
 ![Alt text](docs/img/22.png)
 
+since we are using react hooks let's add linting rules for then as well.
+
+```bash
+npm install eslint-plugin-react-hooks --save-dev
+```
+![Alt text](docs/img/23.png)
+
+and this to extend.
+
+![Alt text](docs/img/24.png)
+
+
+now let's add prettier
+
+
+```bash
+npm install --save-dev --save-exact prettier
+```
+then 
+```bash
+echo {}> .prettierrc.json
+echo {}> ..prettierignore
+```
+ESLint (and other linters)
+
+If you use ESLint, install eslint-config-prettier to make ESLint and Prettier play nice with each other. It turns off all ESLint rules that are unnecessary or might conflict with Prettier.
+
+let's add `eslint-config-prettier`
+
+![Alt text](docs/img/25.png)
+
+if you are using vscode 
+
+![Alt text](docs/img/26.png)
+
+add the config
+
+![Alt text](docs/img/27.png)
+
+
+this sis the config
+```json
+
+{
+    "arrowParens": "always",
+    "singleQuote": true
+
+}
+```
+let's integrate prettier to the eslint.
+
+we will use `eslint-plugin-prettier `
+
+Runs Prettier as an ESLint rule and reports differences as individual ESLint issues.
+
+
+```bash
+npm install --save-dev eslint-plugin-prettier
+```
+
+package updated
+
+![Alt text](docs/img/28.png)
+
+adding prettier rules
+
+![Alt text](docs/img/29.png)
+
+adding prettier config
+
+![Alt text](docs/img/30.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ```json
 {
@@ -130,8 +233,8 @@ now we can see the result
 		"plugin:react-hooks/recommended",
         // this will add the recommended rules from the @typescript-eslint
 		"plugin:@typescript-eslint/recommended",
-        // this will disable conflicting eslint rules with prettier
-		"prettier",
+         // add the prettier recommended setting
+		"plugin:prettier/recommended",
         // so we don't have to import react in every component
 		"plugin:react/jsx-runtime"
 	],
@@ -146,8 +249,19 @@ now we can see the result
     // these are the plugins we installed on our application.
     // @typescript-eslint -> @typescript-eslint/eslint-plugin
     // promise -> "eslint-plugin-promise": "^6.1.1",
-	"plugins": ["@typescript-eslint", "promise"],
+	"plugins": ["react","@typescript-eslint", "promise"],
 	"rules": {
+        "prettier/prettier": [
+			"error",
+			{
+				"singleQuote": true,
+				"endOfLine": "lf",
+				"semi": true,
+				"useTabs": true,
+				"bracketSpacing": true,
+				"bracketSameLine": true
+			}
+		]
         // this will throw an error when we use tabs for indentation.
         // use lf for the line break will fix the crlf files when we run the linter
 		"linebreak-style": ["error", "unix"],
@@ -182,3 +296,91 @@ Turns off all rules that are unnecessary or might conflict with Prettier.
 ### [eslint-plugin-react](https://www.npmjs.com/package/eslint-plugin-react)
 
 React specific linting rules for eslint
+
+
+<!-- not completed -->
+
+## Adding lint-staged to lint our staged files.
+
+first install 
+```bash
+npm install --save-dev lint-staged
+```
+
+then create a config file. `.lintstagedrc.json`
+```json
+{
+	"src/**/*.{ts,tsx}": "npm run lint",
+	"src/**/*.{html,scss,css}": "prettier --write",
+	"*.json": "prettier --write"
+}
+```
+
+## Husky setup
+
+```bash
+npx husky-init && npm install
+```
+It will setup husky, modify package.json and create a sample pre-commit hook that you can edit. By default, it will run npm test when you commit.
+![Alt text](docs/img/31.png)
+
+let's add our lint staged command to our pre commit hook.
+
+![Alt text](docs/img/32.png)
+
+to add new hooks 
+```bash
+npx husky add .husky/commit-msg 'npx --no -- commitlint --edit "$1"'
+```
+
+let's add commit lint to check our commit message.
+
+let's install the dependencies.
+```bash 
+npm i -D @commitlint/cli @commitlint/config-conventional
+```
+![Alt text](docs/img/33.png)
+
+let's add the configuration file to the commitlintrc.json
+
+```json
+{
+"extends":["@commitlint/config-conventional"],
+"rules": {
+    "header-max-length": [2, "always", 50]
+  }
+}
+```
+let's add this to our commit message hook
+to add new hooks 
+```bash
+npx husky add .husky/commit-msg 'npx --no -- commitlint --edit "$1"'
+```
+
+and change it to `prepare-commit-msg`
+```sh
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+npx --no -- commitlint --edit $1 --color
+```
+
+let's add a protected branch as well.
+
+
+```bash
+npx husky add .husky/commit-msg 'npx --no -- commitlint --edit "$1"'
+```
+
+add this code
+```json
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+BRANCH=$(git rev-parse --abbrev-ref HEAD)
+
+if [ "$BRANCH" = "main" ]; then
+  echo "You are not allowed to commit changes directly to the development branch"
+  exit 1
+fi
+```
