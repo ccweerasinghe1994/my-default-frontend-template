@@ -3,7 +3,7 @@ import reactLogo from './assets/react.svg';
 import './App.css';
 
 function App(): JSX.Element {
-	return <div className="App">this is a template file new </div>;
+	return <div className="App">this is a template file </div>;
 }
 
 export default App;
