@@ -11,8 +11,10 @@
 		"prepare": "husky install"
 	},
 	"dependencies": {
+		"@reduxjs/toolkit": "^1.9.3",
 		"react": "^18.2.0",
-		"react-dom": "^18.2.0"
+		"react-dom": "^18.2.0",
+		"react-redux": "^8.0.5"
 	},
 	"devDependencies": {
 		"@commitlint/cli": "^17.4.4",
@@ -20,6 +22,7 @@
 		"@microsoft/eslint-formatter-sarif": "^3.0.0",
 		"@types/react": "^18.0.27",
 		"@types/react-dom": "^18.0.10",
+		"@types/react-redux": "^7.1.25",
 		"@typescript-eslint/eslint-plugin": "^5.53.0",
 		"@typescript-eslint/parser": "^5.53.0",
 		"@vitejs/plugin-react": "^3.1.0",
