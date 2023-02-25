@@ -1,4 +1,7 @@
+// noinspection SpellCheckingInspection
+
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+
 const API_KEY =
 	'live_kicdDGwE77g052Gkl9558mF31sFJpJhwlG6nUzbXsclXPPO3zDwCH7OKmVPXIy3Z';
 

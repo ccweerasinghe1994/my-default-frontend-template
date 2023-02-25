@@ -1,16 +1,10 @@
 import { useState } from 'react';
 import './App.css';
 import { useAppDispatch, useAppSelector } from './app/hooks';
-import {
-	increment,
-	decrement,
-	amountAdded,
-} from './features/counter/counter.slice';
 import { useFetchBreedQuery } from './features/dogs-api/dogs.api.slice';
+
 function App() {
 	const [selectedValue, setSelectedValue] = useState<number>(10);
-	const value = useAppSelector((state) => state.counter.value);
-	const dispatch = useAppDispatch();
 	const { isFetching, data = [] } = useFetchBreedQuery(selectedValue);
 
 	return (
