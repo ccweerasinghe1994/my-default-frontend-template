@@ -42,9 +42,6 @@ function App() {
 					))}
 				</tbody>
 			</table>
-			{/* <h1>value</h1>
-			<h1>{value}</h1>
-			<button onClick={() => dispatch(amountAdded(12))}>increment</button> */}
 		</div>
 	);
 }
