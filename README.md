@@ -7,7 +7,7 @@ npm create vite@latest
 ```
 when creating the application.
 we have to give the application name.
-then we have to give the react as the frame work and typescript as the language.
+then we have to give the React as the framework and typescript as the language.
 
 ## then we can add eslint to our application
 
@@ -96,7 +96,7 @@ so we will use this extension
 
 ![Alt text](docs/img/17.png)
 
-this will remove the react error.
+this will remove the React error.
 
 to fix those issues we will run the linter \
 
@@ -183,36 +183,6 @@ adding prettier rules
 adding prettier config
 
 ![Alt text](docs/img/30.png)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -321,7 +291,7 @@ then create a config file. `.lintstagedrc.json`
 ```bash
 npx husky-init && npm install
 ```
-It will setup husky, modify package.json and create a sample pre-commit hook that you can edit. By default, it will run npm test when you commit.
+It will set up husky, modify package.json and create a sample pre-commit hook that you can edit. By default, it will run npm test when you commit.
 ![Alt text](docs/img/31.png)
 
 let's add our lint staged command to our pre commit hook.
@@ -384,3 +354,17 @@ if [ "$BRANCH" = "main" ]; then
   exit 1
 fi
 ```
+
+## Adding Redux Toolkit
+
+### Installation
+since we are using it with react 
+```shell
+npm install @reduxjs/toolkit react-redux
+```
+and types for the React-redux library
+
+```shell
+npm i -D @types/react-redux
+```
+![34.png](docs%2Fimg%2F34.png)
