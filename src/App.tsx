@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import './App.css';
-import { useAppDispatch, useAppSelector } from './app/hooks';
 import { useFetchBreedQuery } from './features/dogs-api/dogs.api.slice';
 
 function App() {
