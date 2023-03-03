@@ -795,3 +795,25 @@ add the coverage folder to the gitignore
 image.png
 ```
 ![Alt text](docs/img/40.png)
+
+let's add jest dom matchers to the application
+
+```bash
+npm i -D @testing-library/jest-dom
+```
+
+let's create a file called `setup.Tests.ts`
+```ts
+import matchers from '@testing-library/jest-dom/matchers';
+import { expect } from 'vitest';
+
+expect.extend(matchers);
+```
+
+then we will add the setup file path to the define config object 
+```ts
+setupFiles: './src/setupTests.ts',
+```
+
+now we will have access to dom specific matchers.
+
