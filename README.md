@@ -749,3 +749,71 @@ test('use jsdom in this test file', () => {
 ```
 
 ![Alt text](docs/img/38.png)
+
+let'a add coverage configuration
+
+```ts
+/// <reference types="vitest"/>
+
+import { defineConfig } from 'vite';
+// import { configDefaults } from 'vitest/config';
+
+import react from '@vitejs/plugin-react';
+
+// https://vitejs.dev/config/
+export default defineConfig({
+	plugins: [react()],
+	test: {
+		include: ['**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
+		exclude: [
+			'**/node_modules/**',
+			'**/dist/**',
+			'**/cypress/**',
+			'**/.{idea,git,cache,output,temp}/**',
+			'**/{karma,rollup,webpack,vite,vitest,jest,ava,babel,nyc,cypress,tsup,build}.config.*',
+		],
+		environment: 'jsdom',
+		coverage: {
+			provider: 'c8',
+			extension: ['.ts', '.tsx'],
+			all: true,
+			// include: ['**/src/features/**'],
+			branches: 50,
+			statements: 50,
+			functions: 50,
+			lines: 50,
+		},
+	},
+});
+
+```
+
+![Alt text](docs/img/39.png)
+
+add the coverage folder to the gitignore
+```.gitignore
+image.png
+```
+![Alt text](docs/img/40.png)
+
+let's add jest dom matchers to the application
+
+```bash
+npm i -D @testing-library/jest-dom
+```
+
+let's create a file called `setup.Tests.ts`
+```ts
+import matchers from '@testing-library/jest-dom/matchers';
+import { expect } from 'vitest';
+
+expect.extend(matchers);
+```
+
+then we will add the setup file path to the define config object 
+```ts
+setupFiles: './src/setupTests.ts',
+```
+
+now we will have access to dom specific matchers.
+

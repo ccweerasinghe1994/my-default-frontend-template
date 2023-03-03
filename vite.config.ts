@@ -18,5 +18,15 @@ export default defineConfig({
 			'**/{karma,rollup,webpack,vite,vitest,jest,ava,babel,nyc,cypress,tsup,build}.config.*',
 		],
 		environment: 'jsdom',
+		coverage: {
+			provider: 'c8',
+			extension: ['.ts', '.tsx'],
+			all: true,
+			// include: ['**/src/features/**'],
+			branches: 50,
+			statements: 50,
+			functions: 50,
+			lines: 50,
+		},
 	},
 });
