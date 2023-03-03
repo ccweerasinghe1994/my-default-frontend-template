@@ -1,3 +1,4 @@
+/// <reference types="vite/client"/>
 /// <reference types="vitest"/>
 
 import { defineConfig } from 'vite';
@@ -17,6 +18,7 @@ export default defineConfig({
 			'**/.{idea,git,cache,output,temp}/**',
 			'**/{karma,rollup,webpack,vite,vitest,jest,ava,babel,nyc,cypress,tsup,build}.config.*',
 		],
+		setupFiles: './src/setup.Tests.ts',
 		environment: 'jsdom',
 		coverage: {
 			provider: 'c8',
