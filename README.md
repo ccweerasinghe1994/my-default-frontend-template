@@ -16,6 +16,8 @@
     - [let's use the api](#lets-use-the-api)
   - [adding the test framework](#adding-the-test-framework)
     - [installing vtest](#installing-vtest)
+  - [React Router](#react-router)
+    - [let's install react router dom](#lets-install-react-router-dom)
 
 ## let's create a vite app using typescript
 
@@ -817,3 +819,245 @@ setupFiles: './src/setupTests.ts',
 
 now we will have access to dom specific matchers.
 
+## React Router
+
+### let's install react router dom
+
+```shell
+npm i react-router-dom
+```
+
+![Alt text](docs/img/41.png)
+
+let's install the testing libraries to test the react application
+
+```shell
+npm i -D @testing-library/react @testing-library/user-event
+```
+
+let's add the vite config file to the tsconfig file.
+
+```json
+"include": ["src", "vite.config.ts"],
+```
+
+let's add the vite client types to the application
+
+```ts
+/// <reference types="vite/client"/>
+```
+
+let's add the setup file to the config file
+
+![Alt text](docs/im2/2.png)
+
+let's create some sample pages
+
+About page
+```tsx
+import { FC } from 'react';
+
+const AboutPage: FC = () => {
+	return <h1>About Page</h1>;
+};
+
+export default AboutPage;
+
+```
+Home page
+```tsx
+import { FC } from 'react';
+
+const HomePage: FC = () => {
+	return (
+		<>
+			<h1>Home Page</h1>
+		</>
+	);
+};
+
+export default HomePage;
+
+```
+Login page
+```tsx
+import { FC } from 'react';
+
+const LoginPage: FC = () => {
+	return <h1>Login Page</h1>;
+};
+
+export default LoginPage;
+```
+Not Found page
+```tsx
+import { FC } from 'react';
+import { Link } from 'react-router-dom';
+
+const NotFoundPage: FC = () => {
+	return (
+		<>
+			<h1>NOT FOUND</h1>
+			<div>
+				<Link to={'/home'}>Back To Home Page</Link>
+			</div>
+		</>
+	);
+};
+
+export default NotFoundPage;
+```
+Header Component
+```tsx
+import { FC } from 'react';
+import { Link } from 'react-router-dom';
+
+const Header: FC = () => {
+	return (
+		<ul>
+			<li>
+				<Link to={'/home'}>Home</Link>
+			</li>
+			<li>
+				<Link to={'/about'}>About</Link>
+			</li>
+			<li>
+				<Link to={'/login'}>Login</Link>
+			</li>
+		</ul>
+	);
+};
+
+export default Header;
+```
+App Component
+```tsx
+import { Outlet } from 'react-router-dom';
+import './App.css';
+import Header from './Components/Header/Header.component';
+
+function App() {
+	return (
+		<div className="app">
+			<Header />
+			<Outlet />
+		</div>
+	);
+}
+
+export default App;
+
+```
+let's setup the main page
+main
+```tsx
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import App from './App';
+import './index.css';
+import { Provider } from 'react-redux';
+import { store } from './app/store';
+
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import HomePage from './pages/Home/Home.page';
+import NotFound from './pages/NotFound/NotFound.page';
+import AboutPage from './pages/About/About.page';
+import LoginPage from './pages/Login/Login.page';
+
+export const CustomRouter = createBrowserRouter([
+	{
+		path: '/',
+		element: <App />,
+		children: [
+			{
+				path: '/home',
+				element: <HomePage />,
+			},
+			{
+				path: '/about',
+				element: <AboutPage />,
+			},
+			{
+				path: '/login',
+				element: <LoginPage />,
+			},
+		],
+	},
+
+	{
+		path: '/*',
+		element: <NotFound />,
+	},
+]);
+
+ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
+	<Provider store={store}>
+		<React.StrictMode>
+			<RouterProvider router={CustomRouter} />
+		</React.StrictMode>
+	</Provider>
+);
+
+```
+
+let's write the test cases for the app routes
+About page
+```tsx
+import { render, screen } from '@testing-library/react';
+import { describe, expect, it } from 'vitest';
+import { MemoryRouter, Route, Routes } from 'react-router-dom';
+import userEvent from '@testing-library/user-event';
+import App from '../App';
+import HomePage from '../pages/Home/Home.page';
+import AboutPage from '../pages/About/About.page';
+import LoginPage from '../pages/Login/Login.page';
+import NotFoundPage from '../pages/NotFound/NotFound.page';
+
+describe('App', () => {
+	it('landing on a bad page', async () => {
+		const badRoute = '/12w12312';
+
+		// use <MemoryRouter> when you want to manually control the history
+		render(
+			<MemoryRouter initialEntries={[badRoute]}>
+				<Routes>
+					<Route path="/" element={<App />}>
+						<Route path="/home" element={<HomePage />} />
+						<Route path="/about/*" element={<AboutPage />} />
+						<Route path="/login/*" element={<LoginPage />} />
+						<Route path="/*" element={<NotFoundPage />} />
+					</Route>
+				</Routes>
+			</MemoryRouter>
+		);
+
+		// verify navigation to "no match" route
+		expect(screen.getByText(/NOT FOUND/i)).toBeInTheDocument();
+
+		const user = userEvent.setup();
+
+		// verify page content for expected route after navigating
+		await user.click(
+			screen.getByRole('link', {
+				name: 'About',
+			})
+		);
+		expect(screen.getByText(/About Page/i)).toBeInTheDocument();
+
+		await user.click(
+			screen.getByRole('link', {
+				name: 'Login',
+			})
+		);
+		expect(screen.getByText(/Login Page/i)).toBeInTheDocument();
+
+		await user.click(
+			screen.getByRole('link', {
+				name: 'Home',
+			})
+		);
+		expect(screen.getByText(/Home Page/i)).toBeInTheDocument();
+	});
+});
+
+```
