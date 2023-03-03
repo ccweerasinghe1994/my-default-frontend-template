@@ -1,4 +1,21 @@
 # my-default-frontend-template
+- [my-default-frontend-template](#my-default-frontend-template)
+  - [let's create a vite app using typescript](#lets-create-a-vite-app-using-typescript)
+  - [then we can add eslint to our application](#then-we-can-add-eslint-to-our-application)
+  - [eslint config dependencies](#eslint-config-dependencies)
+    - [eslint-config-prettier](#eslint-config-prettier)
+    - [eslint-plugin-react](#eslint-plugin-react)
+  - [Adding lint-staged to lint our staged files.](#adding-lint-staged-to-lint-our-staged-files)
+  - [Husky setup](#husky-setup)
+  - [Adding Redux Toolkit](#adding-redux-toolkit)
+    - [Installation](#installation)
+    - [let's create a simple counter slice.](#lets-create-a-simple-counter-slice)
+    - [let's create the store](#lets-create-the-store)
+    - [let's create the hooks to get the types](#lets-create-the-hooks-to-get-the-types)
+    - [let's add the Provider](#lets-add-the-provider)
+    - [let's use the api](#lets-use-the-api)
+  - [adding the test framework](#adding-the-test-framework)
+    - [installing vtest](#installing-vtest)
 
 ## let's create a vite app using typescript
 
@@ -609,3 +626,126 @@ function App() {
 export default App;
 
 ```
+
+## adding the test framework
+
+### installing vtest
+
+```bash
+npm i -D vitest
+```
+now we can see the package.json file is updated.
+ 
+![Alt text](docs/img/35.png)
+
+
+let's update the vite.config.ts file to setup our test environment.
+
+```ts
+/// <reference types="vitest"/>
+import { defineConfig } from 'vite'
+
+export default defineConfig({
+  test: {
+    // ...
+  },
+})
+```
+we are adding the rest key to the config file to setup the test configuration.
+
+ You'll also need to add a reference to Vitest types using a triple slash command at the top of your config file, if you are importing defineConfig from vite itself.
+
+[`globals:true`](https://vitest.dev/config/#globals) is used to add the test functions globally available in the browser.
+
+let's add files which will be included as test files
+```ts
+/// <reference types="vitest"/>
+
+import { defineConfig } from 'vite';
+// import { configDefaults } from 'vitest/config';
+
+import react from '@vitejs/plugin-react';
+
+// https://vitejs.dev/config/
+export default defineConfig({
+	plugins: [react()],
+	test: {
+		include: ['**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
+	},
+});
+
+```
+
+let's add files which fill be excluded from testing
+```ts
+/// <reference types="vitest"/>
+
+import { defineConfig } from 'vite';
+// import { configDefaults } from 'vitest/config';
+
+import react from '@vitejs/plugin-react';
+
+// https://vitejs.dev/config/
+export default defineConfig({
+	plugins: [react()],
+	test: {
+		include: ['**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
+		exclude: [
+			'**/node_modules/**',
+			'**/dist/**',
+			'**/cypress/**',
+			'**/.{idea,git,cache,output,temp}/**',
+			'**/{karma,rollup,webpack,vite,vitest,jest,ava,babel,nyc,cypress,tsup,build}.config.*',
+		],
+	},
+});
+
+```
+
+since our application is a web application we will use jsdom as a environment.
+
+```ts
+/// <reference types="vitest"/>
+
+import { defineConfig } from 'vite';
+// import { configDefaults } from 'vitest/config';
+
+import react from '@vitejs/plugin-react';
+
+// https://vitejs.dev/config/
+export default defineConfig({
+	plugins: [react()],
+	test: {
+		include: ['**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
+		exclude: [
+			'**/node_modules/**',
+			'**/dist/**',
+			'**/cypress/**',
+			'**/.{idea,git,cache,output,temp}/**',
+			'**/{karma,rollup,webpack,vite,vitest,jest,ava,babel,nyc,cypress,tsup,build}.config.*',
+		],
+		environment: 'jsdom',
+	},
+});
+```
+
+let's add the test command
+
+![Alt text](docs/img/36.png)
+
+and install the jsdom since our env is web application.
+
+![Alt text](docs/img/37.png)
+
+let's write a test command to check the jsdom implementation
+
+```ts
+import { test, expect } from 'vitest';
+test('use jsdom in this test file', () => {
+	const element = document.createElement('div');
+	expect(element).not.toBeNull();
+});
+
+```
+
+![Alt text](docs/img/38.png)
